@@ -1,0 +1,17 @@
+{
+  "name": "biocoin",
+  "version": "1.0.0",
+  "description": "BioCoin platform for biomedical research incentivization and data sharing",
+  "scripts": {
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start:frontend": "cd frontend && npm start",
+    "start:backend": "cd backend && npm start",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "test": "concurrently \"cd frontend && npm test\" \"cd backend && npm test\""
+  },
+  "author": "Charles Ramoose <charlesramoose@biocoin.vip>",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 
