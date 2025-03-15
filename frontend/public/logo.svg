@@ -1,0 +1,34 @@
+<svg width="512" height="512" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+  <!-- Base pentagon shape -->
+  <path
+    d="M25 2 L48 18 L39 45 L11 45 L2 18 Z"
+    fill="none"
+    stroke="#00cc00"
+    stroke-width="2"
+  />
+
+  <!-- Molecular structure -->
+  <path
+    d="M25 15 L35 25 L25 35 L15 25 Z"
+    fill="none"
+    stroke="#00cc00"
+    stroke-width="2"
+  />
+
+  <!-- Connecting lines -->
+  <path
+    d="M25 15 L25 8 M35 25 L42 25 M25 35 L25 42 M15 25 L8 25"
+    fill="none"
+    stroke="#00cc00"
+    stroke-width="2"
+  />
+
+  <!-- Connection nodes -->
+  <circle cx="25" cy="8" r="3" fill="#00cc00" />
+  <circle cx="42" cy="25" r="3" fill="#00cc00" />
+  <circle cx="25" cy="42" r="3" fill="#00cc00" />
+  <circle cx="8" cy="25" r="3" fill="#00cc00" />
+
+  <!-- Center diamond -->
+  <circle cx="25" cy="25" r="4" fill="#00cc00" />
+</svg> 
