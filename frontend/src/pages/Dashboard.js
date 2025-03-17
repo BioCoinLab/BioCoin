@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useToast } from '../contexts/ToastContext';
 
 const Dashboard = () => {
   const [isConnected, setIsConnected] = useState(false);
+  const toast = useToast();
   
   // Mock data for demonstration
   const userData = {
@@ -18,11 +20,35 @@ const Dashboard = () => {
   const connectWallet = () => {
     // In a real implementation, this would connect to a Solana wallet
     setIsConnected(true);
+    toast.success('Wallet connected successfully! You can now manage your BioCoin assets.');
   };
 
   const connectData = () => {
     // In a real implementation, this would open a modal to connect data sources
-    alert('This would open a modal to connect your microbiome data sources');
+    toast.info('Initiating connection to your microbiome data sources...');
+    
+    // Simulate an async operation
+    setTimeout(() => {
+      toast.success('Successfully connected to 1 data source!');
+    }, 2000);
+  };
+
+  const approveRequest = () => {
+    toast.info('Processing your approval...');
+    
+    // Simulate an async operation
+    setTimeout(() => {
+      toast.success('Request approved! You will receive BioCoin tokens once the transaction is processed.');
+    }, 1500);
+  };
+
+  const rejectRequest = () => {
+    toast.info('Processing your rejection...');
+    
+    // Simulate an async operation
+    setTimeout(() => {
+      toast.warning('Request rejected. The researcher will not have access to your data.');
+    }, 1500);
   };
 
   return (
@@ -75,6 +101,37 @@ const Dashboard = () => {
               </button>
             </div>
           </div>
+
+          {/* Pending Requests - New Section */}
+          {userData.pendingRequests > 0 && (
+            <div className="bg-white p-6 rounded-lg shadow-md mb-8">
+              <h2 className="text-xl font-semibold mb-4">Pending Data Access Requests</h2>
+              <div className="border rounded-lg overflow-hidden">
+                <div className="p-4 border-b">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div>
+                      <h3 className="font-medium">GutFlora Research Project</h3>
+                      <p className="text-sm text-gray-600 mt-1">Requesting access to your microbiome data for a study on gut flora diversity.</p>
+                    </div>
+                    <div className="flex gap-2 mt-3 md:mt-0">
+                      <button 
+                        onClick={approveRequest}
+                        className="bg-green-500 hover:bg-green-600 text-white font-medium py-1 px-3 rounded transition"
+                      >
+                        Approve
+                      </button>
+                      <button 
+                        onClick={rejectRequest}
+                        className="bg-red-500 hover:bg-red-600 text-white font-medium py-1 px-3 rounded transition"
+                      >
+                        Reject
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Recent Transactions */}
           <div className="bg-white p-6 rounded-lg shadow-md">

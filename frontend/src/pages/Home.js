@@ -1,7 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useToast } from '../contexts/ToastContext';
 
 const Home = () => {
+  const toast = useToast();
+
+  // Demo function to show various toast notifications
+  const showToastDemo = (type) => {
+    switch (type) {
+      case 'success':
+        toast.success('Successfully connected to your wallet!');
+        break;
+      case 'error':
+        toast.error('Unable to process transaction. Please try again.');
+        break;
+      case 'info':
+        toast.info('New research opportunity available for your data profile.');
+        break;
+      case 'warning':
+        toast.warning('Your data sharing permissions will expire in 7 days.');
+        break;
+      default:
+        toast.info('Welcome to BioCoin platform!');
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-12">
       {/* Hero Section */}
@@ -25,6 +48,38 @@ const Home = () => {
           >
             For Researchers
           </Link>
+        </div>
+      </section>
+
+      {/* New Demo Section */}
+      <section className="py-8 bg-gray-50 rounded-xl p-8 mb-12">
+        <h2 className="text-2xl font-bold text-center mb-6">Experience Our New Notification System</h2>
+        <p className="text-center mb-6">BioCoin v1.01 now features a robust notification system to keep you informed about important events.</p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <button
+            onClick={() => showToastDemo('success')}
+            className="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded transition"
+          >
+            Success Notification
+          </button>
+          <button
+            onClick={() => showToastDemo('error')}
+            className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded transition"
+          >
+            Error Notification
+          </button>
+          <button
+            onClick={() => showToastDemo('info')}
+            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition"
+          >
+            Info Notification
+          </button>
+          <button
+            onClick={() => showToastDemo('warning')}
+            className="bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded transition"
+          >
+            Warning Notification
+          </button>
         </div>
       </section>
 

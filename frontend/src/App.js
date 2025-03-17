@@ -11,24 +11,31 @@ import NotFound from './pages/NotFound';
 // Import components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ToastContainer from './components/ToastContainer';
+
+// Import context providers
+import { ToastProvider } from './contexts/ToastContext';
 
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/research" element={<Research />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <ToastProvider>
+      <Router>
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/research" element={<Research />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+          <ToastContainer />
+        </div>
+      </Router>
+    </ToastProvider>
   );
 }
 
