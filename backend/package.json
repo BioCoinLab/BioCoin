@@ -1,6 +1,6 @@
 {
   "name": "biocoin-backend",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Backend API for BioCoin platform",
   "main": "src/index.js",
   "scripts": {
@@ -17,12 +17,18 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-rate-limit": "^6.7.0",
+    "exceljs": "^4.3.0",
     "joi": "^17.7.1",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.1",
     "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-apple": "^2.0.2",
+    "pdfkit": "^0.13.0",
     "web3": "^1.8.2",
-    "winston": "^3.8.2"
+    "winston": "^3.8.2",
+    "webhook-discord": "^3.7.8"
   },
   "devDependencies": {
     "jest": "^29.4.2",
