@@ -1,6 +1,6 @@
 {
   "name": "biocoin-frontend",
-  "version": "0.2.0",
+  "version": "1.02.1",
   "private": true,
   "dependencies": {
     "@solana/web3.js": "^1.73.0",

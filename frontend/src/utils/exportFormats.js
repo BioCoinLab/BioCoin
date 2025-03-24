@@ -18,17 +18,20 @@ export const exportAsCSV = (data, filename = 'export.csv') => {
     headers.join(','), // Header row
     ...data.map(row => 
       headers.map(header => {
-        // Handle values with commas by wrapping in quotes
-        const cell = row[header] || '';
-        return typeof cell === 'string' && cell.includes(',') 
-          ? `"${cell}"` 
-          : cell;
+        // Handle values with commas, quotes, or special characters
+        const cell = row[header] !== undefined ? String(row[header]) : '';
+        if (cell.includes(',') || cell.includes('"') || cell.includes('\n') || cell.includes('\r')) {
+          // Escape quotes by doubling them and wrap in quotes
+          return `"${cell.replace(/"/g, '""')}"`;
+        }
+        return cell;
       }).join(',')
     )
   ];
   
-  // Create blob and download
-  const csvContent = csvRows.join('\n');
+  // Create blob with UTF-8 BOM for Excel compatibility
+  const BOM = '\uFEFF'; // UTF-8 BOM
+  const csvContent = BOM + csvRows.join('\r\n'); // Use Windows line endings for better compatibility
   const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
   
   downloadFile(blob, filename);

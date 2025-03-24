@@ -1,6 +1,6 @@
 {
   "name": "biocoin",
-  "version": "1.0.0",
+  "version": "1.02.1",
   "description": "BioCoin platform for biomedical research incentivization and data sharing",
   "scripts": {
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",

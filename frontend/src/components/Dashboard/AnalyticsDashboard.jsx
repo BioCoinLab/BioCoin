@@ -44,12 +44,26 @@ const AnalyticsDashboard = ({ userTransactions, researchContributions }) => {
         startDate = new Date(0); // Beginning of time
     }
     
+    // Fix for Safari: ensure dates are parsed correctly by standardizing format
+    const parseSafariSafeDate = (dateString) => {
+      // Convert any date format to YYYY-MM-DD format that works in Safari
+      if (!dateString) return new Date(0);
+      
+      // If it's already a Date object
+      if (dateString instanceof Date) return dateString;
+      
+      // Handle ISO strings and other formats
+      // Replace dashes with slashes for Safari compatibility
+      const normalizedDate = dateString.replace(/-/g, '/');
+      return new Date(normalizedDate);
+    };
+    
     const filteredTransactions = mockTransactions.filter(
-      tx => new Date(tx.date) >= startDate
+      tx => parseSafariSafeDate(tx.date) >= startDate
     );
     
     const filteredResearch = mockResearch.filter(
-      r => new Date(r.date) >= startDate
+      r => parseSafariSafeDate(r.date) >= startDate
     );
     
     // Calculate totals

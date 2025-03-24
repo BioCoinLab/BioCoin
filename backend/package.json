@@ -1,6 +1,6 @@
 {
   "name": "biocoin-backend",
-  "version": "0.2.0",
+  "version": "1.02.1",
   "description": "Backend API for BioCoin platform",
   "main": "src/index.js",
   "scripts": {
